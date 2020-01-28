@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Shikiotone">
+    
+    
+    
+    
+    
+    
+    <title>search | 楔</title>
+    <link href="https://www.楔.jp" rel="prefetch" />
+
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/js/jquery.min.js"></script>
+
+    
+<script src="/js/bootstrap.min.js"></script>
+
+    
+<script src="/js/aos.js"></script>
+
+    
+<script src="/js/highslide/highslide-full.min.js"></script>
+
+    
+<link rel="stylesheet" href="/js/highslide/highslide.css">
+
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars0.githubusercontent.com/u/51998329?s=460&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>background1</span></li>
+    </ul>
+</section>
+    
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://www.楔.jp">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                
+                <div class="navbar-brand">Kusabi</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>Archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>Categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>Tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Crack/">Crack</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Windows/">Windows</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+
+
+<script type="text/javascript">
+
+	var htmlEntityMap = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		'\'': '&#39;',
+		'/': '&#x2F;'
+	};
+
+	
+	function escapeKey(str) {
+		if (typeof str !== 'string') throw new TypeError('str must be a string!');
+
+		
+		return str.replace(/[&<>"'\/]/g, function(a) {
+			return htmlEntityMap[a];
+		});
+	}
+
+	var query = decodeURIComponent(window.location.search).substring(1).split('&')
+    
+    var s = escapeKey(query[0].split('=')[1])
+    
+    var p = query.length > 1 ? query[1].split('=')[1] : 1
+    
+    var pageSize = '10'
+    var useLeancloud = ''
+    var useComment = ('true' === 'true')
+    $.getJSON('/content.json', function (json) {
+      $('#search-breadcrumb').append(`Search results for '${s}'`)
+      var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
+      if (result.length === 0 || result.length <= (p - 1) * pageSize) {
+      	
+      } else {
+        displaySearchResult(result.slice((p - 1) * pageSize, p * pageSize))
+        displayPagination(result)
+      }
+    })
+
+    function getArticles(val, type, json) {
+      return json[type].filter((e) => {
+        return e.title.indexOf(val) !== -1 || e.text.indexOf(val) !== -1
+      })
+    }
+
+    function displaySearchResult(result) {
+      var resultList = $('#article-list')
+      result.forEach(function (article) {
+      	var [month, day] = article.date.split('-')
+        ''
+		''
+        var defaultPreview = '/imgs/preview/preview3.jpg'
+        var preview = article.preview ? article.preview : defaultPreview
+        var path = '/' + article.path
+        resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
+                                <div class="data-article hidden-xs">
+                                    <span class="month">${month}Month</span>
+                                    <span class="day">${day}</span>
+                                </div>
+                                <section class="hidden-xs">
+                                    <div class="title-article">
+                                        <h1>
+                                            <a href="${path}">
+                                                <span>${article.title}</span>
+                                            </a>
+                                        </h1>
+                                    </div>
+                                    <div class="tag-article">
+                                    ${ article.tags.length > 0 ? `<span class="label label-gal"><i class="fa fa-tags"></i>${
+                                    	article.tags.map(function (tag) {
+						                 return `<a href=${ tag.permalink }>${ tag.name }</a>`
+                                    	}).join(', ') }</span>` : '' }
+                                    ${ useLeancloud ? '<span class="label label-gal"><i class="fa fa-eye"></i></span>' : ''}
+                                    </div>
+                                    <div class="alert alert-gal article-body content-article">
+                                         <div class="item">
+                                            <a href="${path}">
+                                                <div class="img">
+                                                    <img src="${preview}" alt="${article.title}">
+                                                </div>
+                                                <div class="info">
+                                                    <p>${article.excerpt}</p>
+                                                </div>
+                                            </a>
+                                         </div>
+					                </div>
+					            </section>
+                           </div>`)
+      })
+      if (useLeancloud) {
+        var Counter = AV.Object.extend('Counter')
+        showPostsTime(Counter)
+      }
+      if (useComment) {
+      	showCommentCount()
+      }
+    }
+
+    function displayPagination(result) {
+      var pgContainer = $('#gal-pagination')
+      var pg = $(pgContainer.find('.pagination-gal')[0])
+      if(result.length > 0) {
+        pgContainer.css('display', 'block')
+      }
+      var num = Math.ceil(result.length / pageSize)
+      var root = '/search'
+      var link = root + `/index.html?s=${s}`
+      if(p > 1) {
+      	pg.append(`<li class="prev"><a href="${link}&page=${p-1}">«</a></li>`)
+      }
+      if(p > 7) {
+      	pg.append(`<li><a href="${link}">1</a></li>
+                   <li><span>...</span></li>`)
+        for(var i = p - 3; i < p; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+      } else {
+      	for(var j = 1; j < p; j++) {
+          pg.append(`<li><a href="${link}${j === 1 ? '' : `&page=${j}`}">${j}</a></li>`)
+        }
+      }
+      pg.append(`<li class="current"><span>${p}</span></li>`)
+      if(p + 7 < num) {
+      	for(var i = p + 1; i <= p + 3; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+        pg.append(`<li><span>...</span></li>`)
+      } else {
+      	for(var j = p + 1; j <= num; j++) {
+          pg.append(`<li><a href="${link}&page=${j}">${j}</a></li>`)
+        }
+      }
+      if(p < num) {
+      	pg.append(`<li class="next"><a href="${link}&page=${p+1}">»</a></li>`)
+      }
+    }
+
+    function showPostsTime(Counter) {
+      var entries = []
+      var excerpts = $('.article-excerpt')
+      excerpts.each(function () {
+        entries.push($(this).find('.title-article').first().find('a').attr('href').trim())
+      })
+      var query = new AV.Query(Counter)
+      query.containedIn('url', entries)
+      query.find().then(function (result) {
+        excerpts.each(function () {
+          var href = $(this).find('.title-article').first().find('a').attr('href').trim()
+          var r = result.filter(function (e) {
+            return e.get('url') === href
+          })
+          if(r.length > 0) {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' ' + r[0].get('time') + ' ℃')
+            })
+          } else {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' 0 ℃')
+            })
+          }
+        })
+      }).then(function (error) {
+        console.log('Error:' + error.code + ' ' + error.message)
+      })
+    }
+
+    function showCommentCount() {
+      const excerpts = $('.article-excerpt')
+      const owner = window.commentConfig.owner
+      const repo = window.commentConfig.repo
+      $.ajax({
+        url: "https://api.github.com/repos/" + owner + '/' + repo + '/issues',
+        data: {
+          creator: owner
+        }
+      }).done(function(issues) {
+        excerpts.each(function () {
+          const that = $(this)
+          that.find('h1 > a > span').each(function () {
+            const title = $(this).text()
+            const tags = that.find('div.tag-article')
+            const issue = issues.filter(function (issue) {
+              return issue.title === title
+            })
+            const comments = issue.length > 0 ? issue[0].comments : 0
+            tags.each(function () {
+              $(this).append('<span class="label label-gal"><i class="fa fa-comments"></i><a> ' + comments + '</a></span>')
+            })
+          })
+        })
+      }).fail(function (error) {
+        console.log(error)
+      });
+    }
+
+</script>
+<div class="breadcrumb breadcrumb-gal" id="search-breadcrumb">
+    <i class="fa fa-home"></i>
+</div>
+<div id="article-list"></div>
+<div id="gal-pagination" class="clearfix" style="display: none;">
+    <ul class="pagination pagination-gal pull-right"></ul>
+</div>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="Search Posts~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Shikiotone
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars0.githubusercontent.com/u/51998329?s=460&v=4" width="140" height="140"
+                 alt="ICON" class="author-image">
+            <p class="author-description"></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            Latest Comments
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            Recent Posts
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/01/20/2/">修改注冊表 完全轉移C盤内Users等文件夾</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/12/12/1/">Live2d Cubism 3.3.x 或 4.x 的破解</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            Random Posts
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/12/12/1/">Live2d Cubism 3.3.x 或 4.x 的破解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/01/20/2/">修改注冊表 完全轉移C盤内Users等文件夾</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/search/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">Hot Tags</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/search/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">Friend Links</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/search/index.html#sidebar-links" data-toggle="tab" id="links-tab">Links</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Crack/" style="font-size: 14.778381748914153px;" class="tag-cloud-link">Crack</a>
+    
+    <a href="/tags/Windows/" style="font-size: 17.842114989058487px;" class="tag-cloud-link">Windows</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://www.xn--05v.jp/Crack/index.html" target="_blank">My Game</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/Shikiotone/" target="_blank">Github</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        
+    </div>
+</footer>
+
+
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+
+<script src="/js/activate-power-mode.js"></script>
+
+<script>
+
+    
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = 'Total %2 pictures, currently the %1 pictures';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    
+	POWERMODE.shake = 'true';       
+	
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '1'
+    }
+</script>
+
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+
+<script src="/js/fallglass.js"></script>
+
+
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Thu Dec 12 2019 23:09:25 GMT+0900'
+      window.commentConfig.owner = 'Shikiotone'
+      window.commentConfig.repo = 'Shikiotone.Github.io'
+      window.commentConfig.client_id = 'a3fed0434c7f14ef21ca'
+      window.commentConfig.client_secret = '6786102dcf3c7cbd15ed5ed4c638c0154fd8ef14'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Thu Dec 12 2019 23:09:25 GMT+0900',
+        owner: 'Shikiotone',
+        repo: 'Shikiotone.Github.io',
+        client_id: 'a3fed0434c7f14ef21ca',
+        client_secret: '6786102dcf3c7cbd15ed5ed4c638c0154fd8ef14',
+        redirect_uri: ''
+      }
+    }
+</script>
+
+<script src="/js/comment/gitment.js"></script>
+
+
+</html>
