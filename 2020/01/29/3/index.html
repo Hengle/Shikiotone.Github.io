@@ -10,7 +10,7 @@
     
     
     
-    <title>search | 楔</title>
+    <title>Il2CppDumper使用Dump破解國内so加密手游 | 楔</title>
     <link href="https://www.楔.jp" rel="prefetch" />
 
     
@@ -154,214 +154,80 @@
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
                     
-
-
-<script type="text/javascript">
-
-	var htmlEntityMap = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		'\'': '&#39;',
-		'/': '&#x2F;'
-	};
-
-	
-	function escapeKey(str) {
-		if (typeof str !== 'string') throw new TypeError('str must be a string!');
-
-		
-		return str.replace(/[&<>"'\/]/g, function(a) {
-			return htmlEntityMap[a];
-		});
-	}
-
-	var query = decodeURIComponent(window.location.search).substring(1).split('&')
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://www.楔.jp">楔</a>
+        >
+        <span>Il2CppDumper使用Dump破解國内so加密手游</span>
+    </div>
     
-    var s = escapeKey(query[0].split('=')[1])
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2020/01/29/3/">Il2CppDumper使用Dump破解國内so加密手游</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Crack/">Crack</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-01-29
+            </span>
+            
+        </div>
+    </div>
     
-    var p = query.length > 1 ? query[1].split('=')[1] : 1
-    
-    var pageSize = '10'
-    var useLeancloud = ''
-    var useComment = ('true' === 'true')
-    $.getJSON('/content.json', function (json) {
-      $('#search-breadcrumb').append(`Search results for '${s}'`)
-      var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
-      if (result.length === 0 || result.length <= (p - 1) * pageSize) {
-      	
-      } else {
-        displaySearchResult(result.slice((p - 1) * pageSize, p * pageSize))
-        displayPagination(result)
-      }
-    })
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2020/01/29/3/">Il2CppDumper使用Dump破解國内so加密手游</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-01-29
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Crack/">Crack</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>0x01 需要用到<br>Il2CppDumper:<a href="https://github.com/Perfare/Il2CppDumper" target="_blank" rel="noopener">https://github.com/Perfare/Il2CppDumper</a><br>Gameguardian:<a href="https://gameguardian.net/download" target="_blank" rel="noopener">https://gameguardian.net/download</a></p>
+<p>0x02<br>自己找到apk内的libil2cpp.so文件和global-metadata.dat<br>部分游戲比如崩壞3他的so和dat是分成2個apk讀取的 你直接用qq傳apk的話就找不到so文件<br>自己去/data/app/裏面找崩壞3的安裝目錄 裏面會有2個apk</p>
+<p>0x03<br>明日方舟so就是加密過的 所以我們不用去提取apk裏面的so 而是從内存中dump出解密過的so<br>先打開我們的Gameguardian和明日方舟<br><img src="https://www.xn--05v.jp/2020/01/29/3/1.jpg" alt="目錄"></p>
+<p>0x04<br>打開游戲之後直接開始Dump 他自動設置好範圍了 你只需要確認就可以<br><img src="https://www.xn--05v.jp/2020/01/29/3/2.jpg" alt="目錄"></p>
+<p>0x05<br>然後去Dump的目錄下 把這些文件複製到電腦上來<br><img src="https://www.xn--05v.jp/2020/01/29/3/3.jpg" alt="目錄"></p>
+<p>0x05<br>然後去Dump的目錄下 把這些文件複製到電腦上來<br>翻到下面有一張内存map表<br><img src="https://www.xn--05v.jp/2020/01/29/3/4.jpg" alt="目錄"><br>打開map表找到il2cpp的内存範圍<br><img src="https://www.xn--05v.jp/2020/01/29/3/5.jpg" alt="目錄"></p>
+<p>0x06<br>可以看到 08000000 但這個是内存中的位置 文件保存出來他并不是這樣命名的 所以必須要自己去分辨<br>因爲so不可能才几KB 所以用大小排序 然後看一下哪些文件包含了08000000<br>這裏我們可以看到05在08的前面 0C也是在0B的后面 這樣就可以確認so在這裏了<br><img src="https://www.xn--05v.jp/2020/01/29/3/6.jpg" alt="目錄"></p>
+<p>0x07<br>由於so是從08000000開始的 而文件是從05003000開始的<br>所以我們要用08000000減去05003000得到02FFD000 這就是so文件的起始位置了<br>然後我們用Ctrl+G跳轉到2FFD000就可以看到elf文件頭標志了<br><img src="https://www.xn--05v.jp/2020/01/29/3/7.jpg" alt="目錄"><br>然後我們還要找到文件尾所以要用0B8E1000減去05003000得到068DE000 這就是so文件的尾部<br>然後把068DE000後面的數據全部刪除 再把02FFD000前面的數據也刪除 就得到so文件了 </p>
+<p>0x08<br>然後去apk裏面把dat和unity資源文件解壓出來就可以正常解密了<br><img src="https://www.xn--05v.jp/2020/01/29/3/8.jpg" alt="目錄"><br>這裏填寫完版本號之後會問你内存的開始地址在哪我們就輸入map表裏的08000000就可以正確識別了<br><img src="https://www.xn--05v.jp/2020/01/29/3/9.jpg" alt="目錄"><br><img src="https://www.xn--05v.jp/2020/01/29/3/10.jpg" alt="目錄"><br>這樣就反編譯完成<br><img src="https://www.xn--05v.jp/2020/01/29/3/11.jpg" alt="目錄"></p>
 
-    function getArticles(val, type, json) {
-      return json[type].filter((e) => {
-        return e.title.indexOf(val) !== -1 || e.text.indexOf(val) !== -1
-      })
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'Il2CppDumper使用Dump破解國内so加密手游'
     }
-
-    function displaySearchResult(result) {
-      var resultList = $('#article-list')
-      result.forEach(function (article) {
-      	var [month, day] = article.date.split('-')
-        ''
-		''
-        var defaultPreview = '/imgs/preview/preview3.jpg'
-        var preview = article.preview ? article.preview : defaultPreview
-        var path = '/' + article.path
-        resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-                                <div class="data-article hidden-xs">
-                                    <span class="month">${month}Month</span>
-                                    <span class="day">${day}</span>
-                                </div>
-                                <section class="hidden-xs">
-                                    <div class="title-article">
-                                        <h1>
-                                            <a href="${path}">
-                                                <span>${article.title}</span>
-                                            </a>
-                                        </h1>
-                                    </div>
-                                    <div class="tag-article">
-                                    ${ article.tags.length > 0 ? `<span class="label label-gal"><i class="fa fa-tags"></i>${
-                                    	article.tags.map(function (tag) {
-						                 return `<a href=${ tag.permalink }>${ tag.name }</a>`
-                                    	}).join(', ') }</span>` : '' }
-                                    ${ useLeancloud ? '<span class="label label-gal"><i class="fa fa-eye"></i></span>' : ''}
-                                    </div>
-                                    <div class="alert alert-gal article-body content-article">
-                                         <div class="item">
-                                            <a href="${path}">
-                                                <div class="img">
-                                                    <img src="${preview}" alt="${article.title}">
-                                                </div>
-                                                <div class="info">
-                                                    <p>${article.excerpt}</p>
-                                                </div>
-                                            </a>
-                                         </div>
-					                </div>
-					            </section>
-                           </div>`)
-      })
-      if (useLeancloud) {
-        var Counter = AV.Object.extend('Counter')
-        showPostsTime(Counter)
-      }
-      if (useComment) {
-      	showCommentCount()
-      }
-    }
-
-    function displayPagination(result) {
-      var pgContainer = $('#gal-pagination')
-      var pg = $(pgContainer.find('.pagination-gal')[0])
-      if(result.length > 0) {
-        pgContainer.css('display', 'block')
-      }
-      var num = Math.ceil(result.length / pageSize)
-      var root = '/search'
-      var link = root + `/index.html?s=${s}`
-      if(p > 1) {
-      	pg.append(`<li class="prev"><a href="${link}&page=${p-1}">«</a></li>`)
-      }
-      if(p > 7) {
-      	pg.append(`<li><a href="${link}">1</a></li>
-                   <li><span>...</span></li>`)
-        for(var i = p - 3; i < p; i++) {
-          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
-        }
-      } else {
-      	for(var j = 1; j < p; j++) {
-          pg.append(`<li><a href="${link}${j === 1 ? '' : `&page=${j}`}">${j}</a></li>`)
-        }
-      }
-      pg.append(`<li class="current"><span>${p}</span></li>`)
-      if(p + 7 < num) {
-      	for(var i = p + 1; i <= p + 3; i++) {
-          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
-        }
-        pg.append(`<li><span>...</span></li>`)
-      } else {
-      	for(var j = p + 1; j <= num; j++) {
-          pg.append(`<li><a href="${link}&page=${j}">${j}</a></li>`)
-        }
-      }
-      if(p < num) {
-      	pg.append(`<li class="next"><a href="${link}&page=${p+1}">»</a></li>`)
-      }
-    }
-
-    function showPostsTime(Counter) {
-      var entries = []
-      var excerpts = $('.article-excerpt')
-      excerpts.each(function () {
-        entries.push($(this).find('.title-article').first().find('a').attr('href').trim())
-      })
-      var query = new AV.Query(Counter)
-      query.containedIn('url', entries)
-      query.find().then(function (result) {
-        excerpts.each(function () {
-          var href = $(this).find('.title-article').first().find('a').attr('href').trim()
-          var r = result.filter(function (e) {
-            return e.get('url') === href
-          })
-          if(r.length > 0) {
-            $(this).find('i.fa-eye').each(function () {
-              $(this).after(' ' + r[0].get('time') + ' ℃')
-            })
-          } else {
-            $(this).find('i.fa-eye').each(function () {
-              $(this).after(' 0 ℃')
-            })
-          }
-        })
-      }).then(function (error) {
-        console.log('Error:' + error.code + ' ' + error.message)
-      })
-    }
-
-    function showCommentCount() {
-      const excerpts = $('.article-excerpt')
-      const owner = window.commentConfig.owner
-      const repo = window.commentConfig.repo
-      $.ajax({
-        url: "https://api.github.com/repos/" + owner + '/' + repo + '/issues',
-        data: {
-          creator: owner
-        }
-      }).done(function(issues) {
-        excerpts.each(function () {
-          const that = $(this)
-          that.find('h1 > a > span').each(function () {
-            const title = $(this).text()
-            const tags = that.find('div.tag-article')
-            const issue = issues.filter(function (issue) {
-              return issue.title === title
-            })
-            const comments = issue.length > 0 ? issue[0].comments : 0
-            tags.each(function () {
-              $(this).append('<span class="label label-gal"><i class="fa fa-comments"></i><a> ' + comments + '</a></span>')
-            })
-          })
-        })
-      }).fail(function (error) {
-        console.log(error)
-      });
-    }
-
 </script>
-<div class="breadcrumb breadcrumb-gal" id="search-breadcrumb">
-    <i class="fa fa-home"></i>
-</div>
-<div id="article-list"></div>
-<div id="gal-pagination" class="clearfix" style="display: none;">
-    <ul class="pagination pagination-gal pull-right"></ul>
-</div>
-
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -480,17 +346,17 @@
 
                 
                 <li>
-                    <a href="/search/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">Hot Tags</a>
+                    <a href="/2020/01/29/3/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">Hot Tags</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/search/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">Friend Links</a>
+                    <a href="/2020/01/29/3/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">Friend Links</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/search/index.html#sidebar-links" data-toggle="tab" id="links-tab">Links</a>
+                    <a href="/2020/01/29/3/index.html#sidebar-links" data-toggle="tab" id="links-tab">Links</a>
                 </li>
                 
             </ul>
@@ -498,9 +364,9 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Crack/" style="font-size: 17.562214424814364px;" class="tag-cloud-link">Crack</a>
+    <a href="/tags/Crack/" style="font-size: 10.620133271277043px;" class="tag-cloud-link">Crack</a>
     
-    <a href="/tags/Windows/" style="font-size: 11.003229079420295px;" class="tag-cloud-link">Windows</a>
+    <a href="/tags/Windows/" style="font-size: 12.410077379510758px;" class="tag-cloud-link">Windows</a>
     
 </div>
                 
@@ -605,7 +471,7 @@
 <script src="https://myau.moe/js/comment/gitment.browser.js"></script>
 <script>
     if(window.commentConfig) {
-      window.commentConfig.id = 'Thu Dec 12 2019 23:09:25 GMT+0900'
+      window.commentConfig.id = 'Wed Jan 29 2020 07:29:29 GMT+0900'
       window.commentConfig.owner = 'Shikiotone'
       window.commentConfig.repo = 'Shikiotone.Github.io'
       window.commentConfig.client_id = 'a3fed0434c7f14ef21ca'
@@ -613,7 +479,7 @@
       window.commentConfig.redirect_uri = ''
     } else {
       window.commentConfig = {
-      	id: 'Thu Dec 12 2019 23:09:25 GMT+0900',
+      	id: 'Wed Jan 29 2020 07:29:29 GMT+0900',
         owner: 'Shikiotone',
         repo: 'Shikiotone.Github.io',
         client_id: 'a3fed0434c7f14ef21ca',
