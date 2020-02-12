@@ -927,7 +927,7 @@ webpackJsonp([17], {
                         e.fillStyle = "#fff",
                         e.fillRect( - a.l, -a.t, this.nw, this.nh),
                         e.drawImage(this.$srcImg, -a.l, -a.t, this.nw, this.nh),
-                        this.clipData = i.toDataURL("image/jpeg", 1),
+                        this.clipData = i.toDataURL("image/png", 1),
                         this.blobObj = this.dataURLtoBlob(this.clipData)
                     }
                 },
