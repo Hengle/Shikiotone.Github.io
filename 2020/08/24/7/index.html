@@ -210,7 +210,8 @@
         </center>
     </div>
     <div class="content-article">
-        <p>0x00 Unity打包到assets时其实所有资源都是以Yaml格式存储的,所以把Shader用UABE保存为YAML格式 然后手动改成unity的那种格式应该是可行的</p>
+        <p>0xNaN 这个方法的目的是为了突破某游戏Shader的使用上限版本2018.3.14f1而想出来的 但实际上能不能突破也没有确切的答案 但这个方法即使不能突破版本上限也能方便很多 毕竟方法一实现起来有很多Bug 比如不能添加带脚本YAML的资源进去</p>
+<p>0x00 Unity打包到assets时其实所有资源都是以Yaml格式存储的,所以把Shader用UABE保存为YAML格式 然后手动改成unity的那种格式应该是可行的</p>
 <p>0x01 实践<br><img src="https://www.xn--05v.jp/2020/08/24/7/1.jpg" alt="目錄"><br>因为要使用YAML 所以就不能做成Shader格式 以其他任何非unity自动识别的格式应该都可以 我就直接把Shader写进New Material.mat里面了</p>
 <p>0x02 <img src="https://www.xn--05v.jp/2020/08/24/7/2.jpg" alt="目錄"><br>可以看到以Yaml的格式写出的Shader确实被识别到了</p>
 <p>0x03 尝试一下后得出的2个结论<br>一:Shader编译后会变成指定平台的Shader代码 所以转换YAML之后无法在其他平台上用<br>二:我只成功翻译出了Shader设置部分 内容部分不知道改怎么改才能让unity识别出<br>手动翻译一个纯色Shader都有1090行 所以我懒得继续搞了</p>
@@ -413,11 +414,11 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 17.743387213424626px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 19.801693450201686px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/Crack/" style="font-size: 8.635759180619672px;" class="tag-cloud-link">Crack</a>
+    <a href="/tags/Crack/" style="font-size: 13.285090002592504px;" class="tag-cloud-link">Crack</a>
     
-    <a href="/tags/Windows/" style="font-size: 9.69559082987833px;" class="tag-cloud-link">Windows</a>
+    <a href="/tags/Windows/" style="font-size: 19.702261136123024px;" class="tag-cloud-link">Windows</a>
     
 </div>
                 
