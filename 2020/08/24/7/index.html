@@ -10,7 +10,7 @@
     
     
     
-    <title>archive_a | 楔</title>
+    <title>Unity Shader 反编译 的另一种思路 | 楔</title>
     <link href="https://www.楔.jp" rel="prefetch" />
 
     
@@ -102,7 +102,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>Archive
                     </a>
@@ -157,19 +157,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://www.楔.jp">楔</a>
         >
-        <span>Archive</span>
+        <span>Unity Shader 反编译 的另一种思路</span>
     </div>
     
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">Archive</a>
+                <a href="/2020/08/24/7/">Unity Shader 反编译 的另一种思路</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Crack/">Crack</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-08-24
+            </span>
+            
         </div>
     </div>
     
@@ -177,56 +192,43 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">Archive</a>
+                    <a href="/2020/08/24/7/">Unity Shader 反编译 的另一种思路</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-08-24
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Crack/">Crack</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2020Year</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2020/08/24/7/">Unity Shader 反编译 的另一种思路</a>
-                        <br>
-            
-             
-                        <a href="/2020/07/21/6/">Il2cpp人脑翻译cs代码</a>
-                        <br>
-            
-             
-                        <a href="/2020/05/24/5/">新建了一個Discord服務器</a>
-                        <br>
-            
-             
-                        <a href="/2020/05/09/4/">Live2D亂碼修復</a>
-                        <br>
-            
-             
-                        <a href="/2020/01/29/3/">Il2CppDumper使用Dump破解國内so加密手游</a>
-                        <br>
-            
-             
-                        <a href="/2020/01/20/2/">修改注冊表 完全轉移C盤内Users等文件夾</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">2019Year</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/2019/12/12/1/">Live2d Cubism 3.3.x 或 4.x 的破解</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <p>0x01 Unity打包到assets时其实所有资源都是以Yaml格式存储的,所以把Shader用UABE保存为YAML格式 然后手动改成unity的那种格式应该是可行的</p>
+<p>0x02 实践<br><img src="https://www.xn--05v.jp/2020/08/24/7/1.jpg" alt="目錄"><br>因为要使用YAML 所以就不能做成Shader格式 以其他任何非unity自动识别的格式应该都可以 我就直接把Shader写进New Material.mat里面了</p>
+<p>0x02 <img src="https://www.xn--05v.jp/2020/08/24/7/2.jpg" alt="目錄"><br>可以看到以Yaml的格式写出的Shader确实被识别到了</p>
+<p>0x0 尝试一下后得出的2个结论<br>一:Shader编译后会变成指定平台的Shader代码 所以转换YAML之后无法在其他平台上用<br>二:我只成功翻译出了Shader设置部分 内容部分不知道改怎么改才能让unity识别出<br>手动翻译一个纯色Shader都有1090行 所以我懒得继续搞了</p>
+<p>***不只是Shader 所有格式都可以这么搞 你要是够无聊可以拿YAML写一张图片</p>
+
     </div>
 </article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'Unity Shader 反编译 的另一种思路'
+    }
+</script>
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     
@@ -392,17 +394,17 @@
 
                 
                 <li>
-                    <a href="/archives/2020/05/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">Hot Tags</a>
+                    <a href="/2020/08/24/7/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">Hot Tags</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2020/05/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">Friend Links</a>
+                    <a href="/2020/08/24/7/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">Friend Links</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2020/05/index.html#sidebar-links" data-toggle="tab" id="links-tab">Links</a>
+                    <a href="/2020/08/24/7/index.html#sidebar-links" data-toggle="tab" id="links-tab">Links</a>
                 </li>
                 
             </ul>
@@ -410,11 +412,11 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 15.509156542298747px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 10.368685969626455px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/Crack/" style="font-size: 8.891066309847403px;" class="tag-cloud-link">Crack</a>
+    <a href="/tags/Crack/" style="font-size: 16.541928701891166px;" class="tag-cloud-link">Crack</a>
     
-    <a href="/tags/Windows/" style="font-size: 8.695153820654681px;" class="tag-cloud-link">Windows</a>
+    <a href="/tags/Windows/" style="font-size: 14.913981093858412px;" class="tag-cloud-link">Windows</a>
     
 </div>
                 
@@ -518,6 +520,30 @@
 <script src="/js/fallglass.js"></script>
 
 
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Mon Aug 24 2020 09:30:00 GMT+0900'
+      window.commentConfig.owner = 'Shikiotone'
+      window.commentConfig.repo = 'Shikiotone.Github.io'
+      window.commentConfig.client_id = 'a3fed0434c7f14ef21ca'
+      window.commentConfig.client_secret = '6786102dcf3c7cbd15ed5ed4c638c0154fd8ef14'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Mon Aug 24 2020 09:30:00 GMT+0900',
+        owner: 'Shikiotone',
+        repo: 'Shikiotone.Github.io',
+        client_id: 'a3fed0434c7f14ef21ca',
+        client_secret: '6786102dcf3c7cbd15ed5ed4c638c0154fd8ef14',
+        redirect_uri: ''
+      }
+    }
+</script>
+
+<script src="/js/comment/gitment.js"></script>
 
 
 </html>
